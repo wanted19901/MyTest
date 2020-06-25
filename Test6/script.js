@@ -1,12 +1,12 @@
 //1 - 12.05.2020 23:00 - 15.06.2020 01:20
 //2 - 17.05.2020 00:00 - 13.09.2020 00:00
-let stamp1 = new Date('25.06.2020').getTime()  
-let stamp2 = new Date('2020-06-15 01:20')
-let stamp3 = new Date('2020-05-17 00:00')
-let stamp4 = new Date('2020-09-13 00:00')
+let stamp1 = Date.parse('2020-05-12 23:00')
+let stamp2 = Date.parse('2020-06-15 01:20')
+let stamp3 = Date.parse('2020-05-17 00:00')
+let stamp4 = Date.parse('2020-09-13 00:00')
 let userStrDate = prompt("Enter date", "YYYY-MM-DD HH:mm")
 let userDate = new Date(userStrDate);
-userDate = Date(userDate)
+userDate = Date.parse(userDate)
 console.log(userDate)
 console.log(stamp1, stamp2, stamp3, stamp4,)
 console.log(userDate<=stamp2)
