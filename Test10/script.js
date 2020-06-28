@@ -181,8 +181,8 @@ var calcDisplay = calc.find('.output');
 var calcKeys = calc.find('.key');
 var calcButton = calc.find('.num');
 var operator = calc.find('.operators');
-var calcClear = calc.find('.c');
-var calcEqual = calc.find('.res');
+var calcC = calc.find('.c');
+var calcRes = calc.find('.res');
 var calcSpace = calc.find('.ce');
 let display = calcDisplay.value
 let operatorsArr = [];
@@ -196,30 +196,42 @@ calcKeys.each(function () {
 calcButton.on('click', function () {
 calcDisplay.val( calcDisplay.val() + $(this).attr('value') );
 });
-calcClear.on('click', function () {
+calcC.on('click', function () {
   calcDisplay.val('');
   a = 0;
   b = 0; 
   operatorsArr = []
 });
-calcEqual.on('click', function () {
-  if (operatorsArr[0] == "+"){
-    b = (calcDisplay.val()*1 + a*1)
-  }
-  else if  (operatorsArr[0] == "-"){
-    b = ((calcDisplay.val()*1) - (a*1))
-    b*=-1
-  }
-  else if (operatorsArr[0] == "*"){
-    b = (calcDisplay.val()*(a*1))
-  }
-  else {
-    b = (a/calcDisplay.val())
-  }
-  console.log(calcDisplay.val(), operatorsArr[0], a , b)
-  calcDisplay.val(b)
-  operatorsArr.pop()
-
+calcRes.on('click', function () {
+  // if (operatorsArr[0] == "+"){
+  //   b = (calcDisplay.val()*1 + a*1)
+  // }
+  // else if  (operatorsArr[0] == "-"){
+  //   b = ((calcDisplay.val()*1) - (a*1))
+  //   b*=-1
+  // }
+  // else if (operatorsArr[0] == "*"){
+  //   b = (calcDisplay.val()*(a*1))
+  // }
+  // else {
+  //   b = (a/calcDisplay.val())
+  // }
+  // console.log(calcDisplay.val(), operatorsArr[0], a , b)
+  // calcDisplay.val(b)
+  // operatorsArr.pop()
+switch (operatorsArr[0]) { 
+case "+" : b = (calcDisplay.val()*1 + a*1);
+break;
+case "-" : b = ((calcDisplay.val()*1) - (a*1));
+b*=-1;
+break;
+case "*" : b = (calcDisplay.val()*(a*1));
+break;
+case "/" : b = (a/calcDisplay.val());
+}
+console.log(a , operatorsArr[0], calcDisplay.val(), b)
+calcDisplay.val(b)
+operatorsArr.pop()
 });
 calcSpace.on('click', function () { 
   calcDisplay.val( calcDisplay.val().substring(0, calcDisplay.val().length-1) );
