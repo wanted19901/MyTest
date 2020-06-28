@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+    <head>
+        <link rel="stylesheet" href="css/style.css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <meta charset="utf-8">
+    </head>
+    <body>
+    	<form id="form">
+      <input class="login" type="text" id="login">
+      </form>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col" class="date">Date</th>
+      <th scope="col">Temperature (Celsium)</th>
+      <th scope="col">Weather description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row"><div class="date" id="date">WettherDate</div></th>
+      <td class="locationTenperature">Tenperature</td>
+      <td class="location" id="location">Location</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+<div id="map"  class="map"> </div>
+       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4RjQvK8Hnp65hjd8qr19JqDU8KKvYIQQ&libraries=places"></script>
+       
+        <script type="text/javascript" src="script.js"></script>
+    </body>
+</html>

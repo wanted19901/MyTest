@@ -236,8 +236,6 @@ operatorsArr.pop()
 calcSpace.on('click', function () { 
   calcDisplay.val( calcDisplay.val().substring(0, calcDisplay.val().length-1) );
 });
-
-
 operator.on('click', function () {
     a = calcDisplay.val();
     calcDisplay.val('')
