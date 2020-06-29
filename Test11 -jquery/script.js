@@ -42,6 +42,7 @@ console.log(json.data[0].temp, json.data[0].weather.description)
 for (let i=0; i <= json.data.length-1; i++) {
   
    var dateElem = document.createElement('tr');
+   //dateElem.style = 'border: 1px solid black; width: 100px'
    var em = document.createElement('em');
    dateElem.append(` ${json.data[i].valid_date} `);
    var defaultElem = document.querySelector("#date");
@@ -56,7 +57,8 @@ for (let i=0; i <= json.data.length-1; i++) {
   weatherElem.append(` ${json.data[i].weather.description}`);
   var defaultWeather = document.querySelector("#weather");
   defaultWeather.append(weatherElem);
-      
+  
+    
   }
 } 
 getWeather(latitude, longitude)
