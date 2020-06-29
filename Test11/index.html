@@ -5,7 +5,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <meta charset="utf-8">
     </head>
-    <body>
+    <body id="body">
     	<form id="form">
       <input class="login" type="text" id="login">
       </form>
@@ -18,10 +18,10 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row"><div class="date" id="date">WettherDate</div></th>
-      <td class="locationTenperature">Tenperature</td>
-      <td class="location" id="location">Location</td>
+    <tr id="tr">
+      <td scope="row" class="date" id="date"></td>
+      <td class="locationTenperature" id="curTemp"></td>
+      <td class="weather" id="weather"></td>
     </tr>
   </tbody>
 </table>
