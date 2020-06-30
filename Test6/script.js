@@ -7,10 +7,6 @@ let stamp4 = Date.parse('2020-09-13 00:00')
 let userStrDate = prompt("Enter date", "YYYY-MM-DD HH:mm")
 let userDate = new Date(userStrDate);
 userDate = Date.parse(userDate)
-console.log(userDate)
-console.log(stamp1, stamp2, stamp3, stamp4,)
-console.log(userDate<=stamp2)
-
 
 function checkDate(userDate){
     if (userDate>=stamp1 && userDate>=stamp3) {

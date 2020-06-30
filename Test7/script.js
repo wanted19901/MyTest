@@ -14,7 +14,5 @@ if (num%3==1 ) {
    }
 } 
 arrIncluder(4,16)
-console.log(arr)
-console.log(arr.length)
 let cloneArr = arr.slice();
 console.log(cloneArr.filter(isPrime))

@@ -30,8 +30,7 @@ google.maps.event.addListener(autocompletes, 'place_changed', function () {
 
     let latitude = place.geometry.location.lat();
     let longitude = place.geometry.location.lng();
-    console.log(latitude, longitude)
-
+    
     async function getWeather(latitude, longitude) {
         let weatheUrl = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${latitude}&lon=${longitude}&key=06bfa05643c54c6eaf6c26c7b39abd7d`;
         let response = await fetch(weatheUrl)
@@ -40,19 +39,18 @@ google.maps.event.addListener(autocompletes, 'place_changed', function () {
         for (let i = 0; i <= json.data.length - 1; i++) {
 
             var dateElem = document.createElement('tr');
-            var em = document.createElement('em');
             dateElem.append(` ${json.data[i].valid_date} `);
-            var defaultElem = document.querySelector("#date");
+            var defaultElem = $("#date");
             defaultElem.append(dateElem);
 
             var tempElem = document.createElement('tr');
             tempElem.append(` ${json.data[i].temp} `);
-            var defaultDate = document.querySelector("#curTemp");
+            var defaultDate = $("#curTemp");
             defaultDate.append(tempElem);
 
             var weatherElem = document.createElement('tr');
             weatherElem.append(` ${json.data[i].weather.description}`);
-            var defaultWeather = document.querySelector("#weather");
+            var defaultWeather = $("#weather");
             defaultWeather.append(weatherElem);
 
         }
