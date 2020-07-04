@@ -16,13 +16,18 @@
 
 toCamelCase(myStr)
 
+function upFirts(item, arr){
+	item = item.charAt(0).toUpperCase() + item.slice(1);
+	arr.push(item);
+}
+
 function toCamelCase(str){
 	let newArr = [];
 	let arr = str
 	.toLowerCase()
 	.split("_"); 
 arr.forEach(function(item, i ) {
-	(i==0)?	newArr.push(item) : (item = item.charAt(0).toUpperCase() + item.slice(1) , newArr.push(item));
+	(i==0)?	newArr.push(item) : upFirts(item, newArr);
 	result = newArr.join("");
   });
   console.log(result)
