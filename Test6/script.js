@@ -8,30 +8,22 @@ let userStrDate = prompt("Enter date", "YYYY-MM-DD HH:mm")
 let userDate = new Date(userStrDate);
 userDate = Date.parse(userDate)
 
+let includePeriod1 = (userDate, stamp1, stamp2) =>  (userDate >= stamp1 && userDate <= stamp2)? true : false; 
+let includePeriod2 = (userDate, stamp3, stamp4) =>  (userDate >= stamp3 && userDate <= stamp4)? true : false; 
+
 function checkDate(userDate){
-    if (userDate>=stamp1 && userDate>=stamp3) {
-        if (userDate<=stamp2&&userDate<=stamp4) {
-            console.log("UserDate includ in period1 and period2")
-        }
-        else if (userDate<=stamp2){
-            console.log("UserDate includ in period1")
-        }
-        else if (userDate<=stamp4){
-            console.log("UserDate include in period2")
-        }  
-        else{ console.log("UserDate note include in period")
-        }
+    if (includePeriod1(userDate, stamp1, stamp2) && includePeriod2(userDate, stamp3, stamp4)) {
+        console.log("UserDate includ in period1 and period2")
     }  
-    else if (userDate>=stamp1 && userDate<=stamp2){
+    else if (includePeriod1(userDate, stamp1, stamp2)){
         console.log("UserDate includ in period1")
     }
-    else if (userDate>=stamp3 && userDate<=stamp4){
+    else if (includePeriod2(userDate, stamp3, stamp4)){
         console.log("UserDate includ in period2")
     }
     else {
         console.log("UserDate note include in period")
     }
-    }
- 
+}
     
 checkDate(userDate)
