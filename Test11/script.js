@@ -1,62 +1,60 @@
-google.maps.event.addDomListener(window, 'load', init);
-var autocompletes, marker, infowindow, map;
+var autocompletes;
+var inputs = document.querySelector('.search');
+
 function init() {
-    var map = new google.maps.Map(document.getElementById('map'), {
-        center: { lat: -33.8688, lng: 151.2195 },
-        zoom: 13
-    });
-    infowindow = new google.maps.InfoWindow();
-    marker = new google.maps.Marker({
-        map: map
-    });
+    google.maps.event.addDomListener(window, 'load', init);
 }
-var inputs = document.querySelector('.login');
+
 autocompletes = new google.maps.places.Autocomplete(inputs);
 google.maps.event.addListener(autocompletes, 'place_changed', function () {
-    marker.setVisible(false);
-    infowindow.close();
+   
+    clearDisplay()
 
     var place = autocompletes.getPlace();
     if (!place.geometry) {
         window.alert("Error");
         return;
     }
-    marker.setIcon(({
-        url: place.icon,
-        scaledSize: new google.maps.Size(35, 35)
-    }));
-    marker.setPosition(place.geometry.location);
-    marker.setVisible(true);
-
     let latitude = place.geometry.location.lat();
     let longitude = place.geometry.location.lng();
-    console.log(latitude, longitude)
 
-    async function getWeather(latitude, longitude) {
-        let weatheUrl = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${latitude}&lon=${longitude}&key=06bfa05643c54c6eaf6c26c7b39abd7d`;
-        let response = await fetch(weatheUrl)
-        var json = await response.json();
+    getWeather(latitude, longitude);
 
-        for (let i = 0; i <= json.data.length - 1; i++) {
+});
 
+async function getWeather(latitude, longitude) {
+   
+    let weatheUrl = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${latitude}&lon=${longitude}&key=06bfa05643c54c6eaf6c26c7b39abd7d`;
+    let response = await fetch(weatheUrl)
+    var json = await response.json();
+       
+        (json.data).forEach(  elem => {
             var dateElem = document.createElement('tr');
-            var em = document.createElement('em');
-            dateElem.append(` ${json.data[i].valid_date} `);
+            dateElem.append(` ${elem.valid_date} `);
             var defaultElem = document.querySelector("#date");
             defaultElem.append(dateElem);
 
             var tempElem = document.createElement('tr');
-            tempElem.append(` ${json.data[i].temp} `);
+            tempElem.append(` ${elem.temp} `);
             var defaultDate = document.querySelector("#curTemp");
             defaultDate.append(tempElem);
 
             var weatherElem = document.createElement('tr');
-            weatherElem.append(` ${json.data[i].weather.description}`);
+            weatherElem.append(` ${elem.weather.description}`);
             var defaultWeather = document.querySelector("#weather");
             defaultWeather.append(weatherElem);
+        });
+}
 
-        }
-    }
-    getWeather(latitude, longitude)
-
-});
+function clearDisplay(){
+    t1 = document.querySelector('#curTemp');
+    t2 = document.querySelector('#weather');
+    t3 = document.querySelector('#date');
+    elArr =[t1,t2,t3]
+    elArr.forEach( el => {
+        while (el.firstChild) {
+                el.removeChild(el.firstChild);
+            }
+    });
+    
+}
