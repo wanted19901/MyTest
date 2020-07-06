@@ -15,13 +15,19 @@ calcKeys.each(function () {
   $(this).text(current);
 });
 
+let nb
+
 calcButton.on('click', function () {
   if (calcDisplay.value = b){
-    console.log(b, calcDisplay.value)
-    calcDisplay.value = 5
-    calcDisplay.val('') 
+    calcDisplay.val('')
+    nb += b 
+    b = 0
+    calcDisplay.val(calcDisplay.val() + $(this).attr('value'));
+    
   }
-  calcDisplay.val(calcDisplay.val() + $(this).attr('value'));
+  else {
+    calcDisplay.val(calcDisplay.val() + $(this).attr('value'));
+  }
 });
 
 calcC.on('click', function () {
@@ -63,7 +69,7 @@ operator.on('click', function () {
       case "*" : b = (calcDisplay.val()*(a*1));
       break;
       case "/" : b = (a/calcDisplay.val());
-      calcDisplay.val(b)
+      calcDisplay.val(b+nb)
     }
     calcDisplay.val(b)
     operatorsArr.pop()
